@@ -19,7 +19,7 @@ router.
 when §kfunky text
 falling be like
 /kill @s
-/execute as @r kill @s
+/execute as @r run kill @s
 whoa.
 remember when prism the game
 #fc036b
