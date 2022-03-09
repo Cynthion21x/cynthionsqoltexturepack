@@ -3,7 +3,7 @@ name: Commit Auto Build
 on:
   push:
     paths:
-      - "mod.hjson"
+      - "ver.txt"
 
 jobs:
   buildJar:
