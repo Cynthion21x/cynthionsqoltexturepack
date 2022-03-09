@@ -6,7 +6,7 @@ on:
       - "ver.txt"
 
 jobs:
-  buildJar:
+  ZipTex:
     runs-on: ubuntu-latest
 
     steps:
