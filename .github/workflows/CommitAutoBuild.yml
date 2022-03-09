@@ -1,0 +1,46 @@
+name: Commit Auto Build
+
+on:
+  push:
+    paths:
+      - "mod.hjson"
+
+jobs:
+  buildJar:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up PATH
+      run: |
+        echo "${ANDROID_HOME}/build-tools/30.0.1" >> $GITHUB_PATH
+
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: 'cynthionqol.zip'
+        exclusions: '*.git* /*node_modules/* .editorconfig'
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_id }}
+        release_name: Release ${{ github.run_id }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Assets
+      uses: actions/upload-release-asset@v1
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: cynthonqol.zip
+        asset_name: CynthonsQolTexPac.zip
+        asset_content_type: application/zip
