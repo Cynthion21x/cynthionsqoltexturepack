@@ -22,7 +22,7 @@ whoa.
 #fc036b
 #include <iostream> while (1 == 1){std::cout << "i don't think i have told you but your sad";}
 // you probably dont use enough comments
-Hello Not World!
+Goodbye World!
 inkquilibrium
 PhotoCynthesis
 sneaky
